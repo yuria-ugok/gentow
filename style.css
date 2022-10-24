@@ -1,0 +1,159 @@
+[v-cloak] {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #707070;
+  font-size: 20px;
+  max-width: 1280px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #707070;
+}
+
+header {
+  display: flex;
+}
+
+header h1 {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 50px;
+  margin: 28px 0 0 140px;
+  text-align: left;
+}
+
+.nav {
+  margin: 28px 90px 0 auto;
+}
+
+.nav li {
+  cursor: pointer;
+}
+
+.nav img {
+  border-radius: 50%;
+}
+
+header ul {
+  list-style-type: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+
+.post button:hover {
+  background-color: #707070;
+  color: #fff;
+}
+
+.index {
+  margin-left: 240px;
+}
+
+.index form {
+  position: relative;
+}
+
+.search_box {
+  font-size: 18px;
+  margin-bottom: 25px;
+  padding-left: 24px;
+  width: 400px;
+  height: 50px;
+}
+
+.search_icon {
+  position: absolute;
+  top: 16px;
+  left: 356px;
+}
+
+.index span {
+  background-color: #f0f3f5;
+  border: solid 1px #cdd6dd;
+  border-radius: 40px;
+  font-size: 18px;
+  padding: 8px 20px;
+}
+
+.index table {
+  border-spacing: 25px;
+  margin: 25px 0 0 -25px;
+}
+
+.index td {
+  border: solid 1px #000;
+  display: grid;
+  grid-template-rows: 1fr 35px;
+  grid-template-columns: 92px 1fr;
+  padding: 18px;
+  width: 700px;
+}
+
+.user_icon {
+  grid-row: 1;
+  grid-column: 1;
+  margin-right: 30px;
+  margin-left: 12px;
+}
+
+.content {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.button {
+  display: flex;
+  grid-row: 2;
+  grid-column: 2;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.button button {
+  color: #707070;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.button img {
+  align-self: flex-end;
+}
+
+.post {
+  text-align: center;
+}
+
+.post textarea {
+  font-size: 20px;
+  margin: 40px;
+  padding: 13px 23px 0;
+  width: 740px;
+  height: 140px;
+}
+
+.post button {
+  border: solid 1.5px #707070;
+  font-size: 20px;
+  padding: 27px 72px;
+}
+
+footer {
+  margin-top: 100px;
+  text-align: center;
+}

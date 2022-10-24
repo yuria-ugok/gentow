@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>gentow</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      href="img/apple-touch-icon-180x180.png"
+    />
+    <link rel="icon" type="image/png" href="img/icon-192x192.png" />
+  </head>
+
+  <body v-cloak @vue:mounted="init">
+    <header>
+      <div>
+        <h1 @click="setScreen(1)">gentow</h1>
+      </div>
+      <div class="nav">
+        <ul>
+          <div id="user">
+            <div id="profile"></div>
+            <li id="signout">サインアウト</li>
+          </div>
+          <li @click="setScreen(1)">投稿一覧</li>
+          <li @click="setScreen(2)">新規投稿</li>
+          <li @click="setScreen(3)">マイページ</li>
+        </ul>
+      </div>
+    </header>
+
+    <div id="app">
+      <!-- 画面1 -->
+      <template v-if="screen == 1">
+        <div id="screen1" v-scope="Screen1()"></div>
+      </template>
+
+      <!-- 画面2 -->
+      <template v-if="screen == 2">
+        <div id="screen2" v-scope="Screen2()"></div>
+      </template>
+
+      <!-- 画面3 -->
+      <template v-else>
+        <div id="screen3" v-scope="Screen3()"></div>
+      </template>
+    </div>
+
+    <footer>
+      <p>@yuria_ugok</p>
+    </footer>
+
+    <!-- 画面1 -->
+    <template id="screen1-tmpl">
+      <div class="index">
+        <form>
+          <input
+            class="search_box"
+            type="search"
+            maxlength="254"
+            placeholder="キーワードを入力"
+          />
+          <button type="submit" @click.prevent="search" class="search_icon">
+            <img src="/img/search.png" width="20" height="20" />
+          </button>
+        </form>
+        <div>
+          <table>
+            <tr v-for="(output, key) in dataExtract">
+              <td>
+                <div class="user_icon">
+                  <img src="/img/user_icon.png" width="50" />
+                </div>
+                <div class="content">{{output.input}}</div>
+                <div class="button">
+                  <div>
+                    <button @click.prevent="goodVote(key)">
+                      <img src="/img/emotion-unhappy-fill.svg" />
+                      不平等だと思う</button
+                    >{{output.goodNum}}
+                  </div>
+                  <div>
+                    <button @click.prevent="NotGoodVote(key)">
+                      <img src="/img/emotion-normal-fill.svg" />
+                      そう思わない</button
+                    >{{output.NotGoodNum}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </template>
+
+    <!-- 画面2 -->
+    <template id="screen2-tmpl">
+      <div id="post" class="post">
+        <p>職場でジェンダーギャップを感じたこと</p>
+        <form>
+          <textarea
+            v-model="input"
+            placeholder="入力してください"
+            required
+          ></textarea
+          ><br />
+          <button type="submit" @click.prevent="func_save">送信する</button>
+        </form>
+      </div>
+    </template>
+
+    <!-- 画面3 -->
+    <template id="screen3-tmpl">
+      <div class="index">
+        <table>
+          <tr v-for="(output, key) in MydataExtract">
+            <td>
+              <div class="user_icon">
+                <img src="/img/user_icon.png" width="50" />
+              </div>
+              <div class="content">{{output.input}}</div>
+              <div class="button">
+                <button @click.prevent="remove(key)">
+                  <img src="/img/trash_can.png" width="25" height="25" />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </template>
+
+    <script defer src="https://unpkg.com/petite-vue"></script>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.12.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.12.1/firebase-auth-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/9.12.1/firebase-database-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.12.1/firebase-firestore-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.12.1/firebase-functions-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.12.1/firebase-messaging-compat.js"
+    ></script>
+    <script defer src="/__/firebase/9.12.1/firebase-storage-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/9.12.1/firebase-analytics-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.12.1/firebase-remote-config-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.12.1/firebase-performance-compat.js"
+    ></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script defer src="app.js"></script>
+  </body>
+</html>
